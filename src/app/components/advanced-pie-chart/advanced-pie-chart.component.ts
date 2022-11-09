@@ -30,7 +30,8 @@ export class AdvancedPieChartComponent  {
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-
+  explodeSlices = false;
+  
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };

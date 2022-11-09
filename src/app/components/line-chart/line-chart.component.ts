@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as shape from 'd3-shape';
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
@@ -13,15 +13,19 @@ export class LineChartComponent {
       "series": [
         {
           "name": "1990",
-          "value": 62000000
+          "value": 10
         },
         {
           "name": "2010",
-          "value": 73000000
+          "value": 20
         },
         {
-          "name": "2011",
-          "value": 89400000
+          "name": "2020",
+          "value": 30
+        },
+        {
+          "name": "2030",
+          "value": 40
         }
       ]
     },
@@ -31,15 +35,19 @@ export class LineChartComponent {
       "series": [
         {
           "name": "1990",
-          "value": 250000000
+          "value": 5
         },
         {
           "name": "2010",
-          "value": 309000000
+          "value": 15
         },
         {
-          "name": "2011",
-          "value": 411000000
+          "name": "2020",
+          "value": 10
+        },
+        {
+          "name": "2030",
+          "value": 40
         }
       ]
     },
@@ -49,15 +57,19 @@ export class LineChartComponent {
       "series": [
         {
           "name": "1990",
-          "value": 580000000
+          "value": 15
         },
         {
           "name": "2010",
-          "value": 40000020
+          "value": 10
         },
         {
-          "name": "2011",
-          "value": 68000000
+          "name": "2020",
+          "value": 20
+        },
+        {
+          "name": "2030",
+          "value": 40
         }
       ]
     },
@@ -66,15 +78,19 @@ export class LineChartComponent {
       "series": [
         {
           "name": "1990",
-          "value": 570000000
+          "value": 7
         },
         {
           "name": "2010",
-          "value": 620000000
+          "value": 14
         },
         {
-          "name": "2010",
-          "value": 820000000
+          "name": "2020",
+          "value": 21
+        },
+        {
+          "name": "2030",
+          "value": 35
         }
       ]
     }
@@ -94,6 +110,28 @@ export class LineChartComponent {
   yAxisLabel: string = 'Population';
   timeline: boolean = true;
 
+  curves = {
+    Basis: shape.curveBasis,
+    'Basis Closed': shape.curveBasisClosed,
+    Bundle: shape.curveBundle.beta(1),
+    Cardinal: shape.curveCardinal,
+    'Cardinal Closed': shape.curveCardinalClosed,
+    'Catmull Rom': shape.curveCatmullRom,
+    'Catmull Rom Closed': shape.curveCatmullRomClosed,
+    Linear: shape.curveLinear,
+    'Linear Closed': shape.curveLinearClosed,
+    'Monotone X': shape.curveMonotoneX,
+    'Monotone Y': shape.curveMonotoneY,
+    Natural: shape.curveNatural,
+    Step: shape.curveStep,
+    'Step After': shape.curveStepAfter,
+    'Step Before': shape.curveStepBefore,
+    default: shape.curveLinear
+  };
+
+  // line interpolation
+  curveType: string = 'Basis';
+  curve: any = this.curves[this.curveType];
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
